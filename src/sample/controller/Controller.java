@@ -153,7 +153,7 @@ public class Controller {
         });
         resetButton.setGraphic(STOP_ICON);
         resetButton.setOnAction(event -> {
-            if (algorithm != null && algorithm.isAlive()) {
+            if (algorithm != null) {
                 algorithm.stop();
                 resetControls();
                 initChart(functionComboBox.getValue());
