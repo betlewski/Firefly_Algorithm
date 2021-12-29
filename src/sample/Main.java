@@ -17,6 +17,7 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
+        stage.setOnCloseRequest(e -> System.exit(0));
     }
 
     public static void main(String[] args) {
