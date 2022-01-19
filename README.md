@@ -1,1 +1,1 @@
-# Glowworm Swarm Optimization
+# Firefly Algorithm

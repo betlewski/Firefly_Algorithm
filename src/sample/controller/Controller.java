@@ -185,6 +185,24 @@ public class Controller {
                     absorptionCoefficient, randomStepCoefficient, stepDownCoefficient);
             algorithm = new Algorithm(param);
             new Thread(() -> algorithm.show(this)).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(10, iterationsNumber, maxAttractionCoefficient,
+//                    0.1, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(25, iterationsNumber, maxAttractionCoefficient,
+//                    0.1, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(50, iterationsNumber, maxAttractionCoefficient,
+//                    0.1, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(10, iterationsNumber, maxAttractionCoefficient,
+//                    1.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(25, iterationsNumber, maxAttractionCoefficient,
+//                    1.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(50, iterationsNumber, maxAttractionCoefficient,
+//                    1.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(10, iterationsNumber, maxAttractionCoefficient,
+//                    2.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(25, iterationsNumber, maxAttractionCoefficient,
+//                    2.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
+//            new Thread(() -> new Algorithm(new AlgorithmParam(50, iterationsNumber, maxAttractionCoefficient,
+//                    2.0, randomStepCoefficient, stepDownCoefficient)).doResearch()).start();
         } else {
             setPlayButton();
         }

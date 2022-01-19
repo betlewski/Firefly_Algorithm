@@ -181,32 +181,33 @@ public class Algorithm {
 //        return (Math.round(best.eval() * 100.0) / 100.0);
 //    }
 
-//    public void doResearch() {
-//        alive = true;
-//        final int samples = 1000;
-//        double standDeviation = 0.0;
-//        System.out.println("---------- STARTING RESEARCH ----------");
-//        for (int k = 1; k <= samples; k++) {
-//            swarm = new ArrayList<>();
-//            for (int i = 0; i < swarmSize; i++) {
-//                Firefly firefly = new Firefly(FunctionUtils.MIN_RANGE, FunctionUtils.MAX_RANGE);
-//                swarm.add(firefly);
-//            }
-//            for (int i = 0; i < iterationsNumber; i++) {
-//                iterate();
-//            }
-//            double bestValue = getBestValueInStep();
-//            standDeviation += Math.pow(bestValue, 2);
-//            if (bestValue < bestValueAtAll) {
-//                bestValueAtAll = bestValue;
-//            }
-//            System.out.println(k + "/" + samples);
-//        }
-//        standDeviation = Math.sqrt(standDeviation / (double) samples);
-//        System.out.println("---------- COMPLETED ----------");
-//        System.out.println("The best value: " + bestValueAtAll);
-//        System.out.println("Standard Deviation: " + standDeviation);
-//        alive = false;
-//    }
+    public void doResearch() {
+        final int samples = 1000;
+        List<Double> bestValues = new ArrayList<>();
+        for (int k = 1; k <= samples; k++) {
+            initSwarm();
+            double sampleBest = MAX_VALUE;
+            for (int i = 0; i < iterationsNumber; i++) {
+                iterate();
+                double currentBest = getBestValueInStep();
+                if (currentBest < sampleBest) {
+                    sampleBest = currentBest;
+                }
+            }
+            bestValues.add(sampleBest);
+//            System.out.println("---------------------------SAMPLE " + k + "--------------------------");
+//            System.out.println("Best Evaluation: " + sampleBest);
+        }
+        double average = bestValues.stream().mapToDouble(value -> value).sum() / (double) samples;
+        double standDeviation = 0.0;
+        for (double value : bestValues) {
+            standDeviation += Math.pow((value - average), 2);
+        }
+        standDeviation = Math.sqrt(standDeviation / (double) samples);
+        System.out.println("---------------------------COMPLETED-------------------------");
+        System.out.println("Absorption: " + absorptionCoefficient + " | Population size: " + swarmSize);
+        System.out.println("Average: " + average);
+        System.out.println("Standard Deviation: " + standDeviation);
+    }
 
 }
